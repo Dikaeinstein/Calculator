@@ -1,0 +1,102 @@
+/***************************************
+ *    Custom styles by Dikaeinstein    *
+ **************************************/
+
+/* Mobile first */
+html {
+    font-size: 10px;
+}
+body {
+    font-size: 1.6rem;
+    font-family: 'Noto Sans', sans-serif;
+    background-color: rgb(220,220,220);
+}
+/* Calcalator */
+.calc {
+    width: 100%;
+    height: 60rem;
+    margin: 2.0rem auto;
+    color: #888;
+    background: #333;
+    box-shadow: 0 6px 24px 8px rgba(0, 0, 0, 0.22);
+}
+/* Calculator display */
+.display div {
+    background: #222;
+    border: none;
+    width: 100%;
+    overflow: hidden;
+}
+.display div#operation {
+    height: 7.5rem;
+    color: #b4b4b4;
+    padding: 2.0rem;
+}
+.display div#main {
+    height: 12.5rem;
+    font-size: 5.4rem;
+    color: #fff;
+    padding: 1.0rem 2.0rem;
+}
+.main-number,
+.main-result,
+.operation-op,
+.operation-num {
+    display: inline;
+}
+/* Buttons */
+.btn {
+    background: #444;
+    color: #b4b4b4;
+    height: 8rem;
+    float: left;
+    border: none;
+    border-radius: 0;
+    font-size: 2.4rem;
+    cursor: default;
+}
+.btn-single {
+    width: 25%;
+}
+.btn-double {
+    width: 50%; 
+}
+.btn:hover {
+    background: #333;
+    color: #b4b4b4;
+}
+.btn:active {
+    background: #2c2c2c;
+    color: #b4b4b4;
+}
+/* Special buttons */
+.operator,
+#clear,
+#backspace {
+    background: #333;
+}
+.operator:hover,
+#clear:hover,
+#backspace:hover {
+    background: #2c2c2c;
+    color: #b4b4b4;
+}
+
+/* Equals to button */
+#equal {
+    background: #2196f3;
+    color: #000;
+}
+#equal:hover {
+    background: rgba(33, 150, 243, 0.89);
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .calc {
+        margin: 8.4rem auto;
+        width: 41rem;
+        color: #fff;
+        background: #222;
+    }
+}
