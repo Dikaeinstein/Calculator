@@ -1,34 +1,46 @@
 /* jshint node: true, esversion: 6 */
 const operators = {
     "+": function sum(x, y) {
-        return Math.round((x + y) * 100) / 100;
+        return new Big(x).plus(y);
     },
     "-": function sub(x, y) {
-        return Math.round((x - y) * 100) / 100;
+        return new Big(x).minus(y);
     },
     "x": function mul(x, y) { 
-        return Math.round((x * y) * 100) / 100;
+        return new Big(x).times(y).round(8);
     },
     "/": function div(x, y) {
-        return Math.round((x / y) * 100) / 100;
+        return new Big(x).div(y).round(8);
     }
 };
+let handleTotal = (bigTotal) => (bigTotal.e > 12) ? bigTotal.toExponential() : bigTotal.toString();
 
 function clickNumber(e) {
     var mainDisp = $("#main");
     var value = $(e.target).val();
     var numElement = `<div class="main-number">${value}</div>`;
-    // handle character length in the main display
-    if (mainDisp.contents().length >= 8) {
-        return false;
+    
+    // handle number length in the main display
+    if (mainDisp.contents().length >= 12) {
+        // if number length exceeds 12 scale down font-size to
+        // to accumulate upto 16 numbers
+        if (mainDisp.contents().length < 16) {
+            mainDisp.css("font-size", "4.2rem");
+            mainDisp.append(numElement);
+        }
+        else
+            return false;
     }
     else {
+        mainDisp.css("font-size", "5.4rem");
         // display numbers
-        if ($("#main div:first").text() === "0" && value === "0")
+        if ($("#main div:first").text() === "0" && $("#main div").length === 1 && value === "0")
             return false;
         else if ($("#main div:first").text() === "0" && value !== "." && $("#main div").length === 1)
             mainDisp.html(numElement); 
         else if ($("#main div:first").text() === "0" && value === ".")
+            mainDisp.append(numElement);
+        else if ($("#main div:first").text() === "0" && $($("#main div").get(1)).text() === ".")
             mainDisp.append(numElement);
         else if ($("#main div").is(".main-result")) 
             mainDisp.html(numElement);
@@ -72,12 +84,14 @@ function clickEqual() {
     // loop through operators and perform operation
     for (var i = 0; i < ops.length; i++) {
         number = Number($(nums[i]).text().trim());
-        total = operators[operator](total, number);
+        total = handleTotal(operators[operator](total, number));
+        console.log(total);
         operator = $(ops[i]).text().trim();
     }
-    number = Number($("#main").text().trim());
-    total = operators[operator](total, number);
+    number = $("#main").text().trim();
+    total = handleTotal(operators[operator](total, number));
     $("#main").html(`<div class="main-result">${total}</div>`);
+    console.log(total);
     $("#operation").empty();
 }
 
