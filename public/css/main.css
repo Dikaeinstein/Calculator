@@ -44,6 +44,12 @@ body {
 .operation-num {
     display: inline;
 }
+.main-result {
+    font-size: 5.4rem;
+}
+.main-result-divby0 {
+    font-size: 3.6rem;
+}
 /* Buttons */
 .btn {
     background: #444;
