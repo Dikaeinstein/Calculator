@@ -1,7 +1,7 @@
 # calculator
 
 A basic calculator written with JavaScript.
-To view live visit [calculator](https://dikaeinstein.github.io/calculator){:target="_blank"}
+To view live visit <a href="https://dikaeinstein.github.io/calculator" target="_blank">Calculator</a>
 
 ## Features
 
