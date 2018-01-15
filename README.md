@@ -1,6 +1,7 @@
 # calculator
 
-A basic calculator written with JavaScript
+A basic calculator written with JavaScript.
+To view live visit [calculator](https://dikaeinstein.github.io/calculator)
 
 ## Features
 
